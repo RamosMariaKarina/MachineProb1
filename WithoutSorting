@@ -1,0 +1,100 @@
+#include <iostream>
+#include <conio.h>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	
+	// DECLARATION OF IDENTIFIERS
+	string StudentName[50];
+	int num;
+	double IndivReports[10], GroupReports[10], Quiz[2];
+	double WrittenPrelim, WrittenFinals, PracPrelim, PracFinals;
+	double sumIndivReport, PercIndiv[50];
+	double sumGroupReport, PercGroup [50];
+	double sumQuiz, PercQuiz[50];
+	double sumMajor, PercMajor[50];
+	double GPA[50];
+	
+	
+	// CODE FOR STUDENT NAME INPUT
+	for (num = 0; num <50; num++)
+	{
+		cout << "--------------------------------------------------------" << endl;
+		cout << "Enter Student Name: "; 
+		cin >> StudentName[num];
+		cout << "Enter scores for 10 Individual Reports. Each Report is 100 points each." << endl;
+	//CODE FOR INDIVIDUAL REPORTS INPUT
+			for (num= 0; num <10; num++)
+				cin >> IndivReports[num];
+			
+			sumIndivReport=0;
+			for (num =0; num < 10; num++)
+				sumIndivReport = sumIndivReport + IndivReports[num];
+				PercIndiv[num] = (sumIndivReport/1000) * 15;
+/*				cout << PercIndiv[num] << endl;     <-------- TESTING LANG TO */
+			
+	//CODE FOR GROUP REPORTS INPUT
+		cout << "Enter scores for 10 Group Reports. Each Report is 100 points each." << endl;
+			for (num=0; num <10; num++)
+				cin >> GroupReports[num];
+				
+			sumGroupReport=0;
+			for (num =0; num <10; num++)
+				sumGroupReport = sumGroupReport + GroupReports[num];
+				PercGroup[num] = (sumGroupReport/1000) * 25;
+				//cout << PercGroup[num] << endl;        <----- TESTING LANG ULIT
+				
+	// CODE FOR QUIZZES	
+		cout << "Enter scores for 2 Quizzes" << endl;
+			for (num=0; num <2; num++)
+				cin >> Quiz[num];
+				
+			sumQuiz = 0;
+			for (num=0; num <2; num++)
+				sumQuiz = sumQuiz + Quiz[num];
+				PercQuiz[num] = (sumQuiz/200)*20;
+				//cout << PercQuiz[num];                 <--- TESTING LANG
+			
+	//CODE FOR MAJOR EXAMINATION
+	// Prelims
+		cout << "Enter score in Written Preliminary Examination (n/30): "; cin >> WrittenPrelim;
+		cout << "Enter score in Practical Preliminary Examination (n/70): "; cin >> PracPrelim;
+	// Finals
+		cout << "Enter score in Written Final Examination (n/30): "; cin >> WrittenFinals;
+		cout << "Enter score in Practical Final Examination (n/70): "; cin >> PracFinals;
+		
+		sumMajor= WrittenPrelim + PracPrelim + WrittenFinals + PracFinals;
+		PercMajor[num] = (sumMajor/200)*40;
+		// cout << PercMajor[num]; <---------- testing lang will remove later
+		GPA[num] = PercMajor[num] + PercQuiz[num] + PercGroup[num] + PercIndiv[num];
+	}
+	
+	for (num =0; num <50; num++)
+	cout << StudentName[num] << endl;
+		if (GPA[num] >= 95.57)
+			cout <<  "GPA: 1.00" << endl;
+		else if (GPA[num] <= 95.56 || GPA[num] >= 91.12)
+			cout << "GPA: 1.25" << endl;
+		else if (GPA[num] <= 91.11 || GPA[num] >= 86.68)
+			cout << "GPA: 1.50" << endl;
+		else if (GPA[num] <= 86.67 || GPA[num] >= 82.23)
+			cout << "GPA: 1.75" << endl;
+		else if (GPA[num] <= 82.22 || GPA[num] >= 77.79)
+			cout << "GPA: 2.00" << endl;
+		else if (GPA[num] <= 77.78 || GPA[num] >= 73.34)
+			cout << "GPA: 2.25" << endl;
+		else if (GPA[num] <= 73.33 || GPA[num] >= 68.90)
+			cout << "GPA: 2.50" << endl;
+		else if (GPA[num] <= 68.89 || GPA[num] >= 64.45)
+			cout << "GPA: 2.75" << endl;
+		else if (GPA[num] <= 64.44 || GPA[num] >= 60)
+			cout << "GPA: 2.30" << endl;
+		else
+			cout << "GPA: 5.00" << endl;
+			
+	_getch();
+	return 0;
+}
